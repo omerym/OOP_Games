@@ -1,19 +1,13 @@
 #include <iostream>
-#include "../BoardGame_Classes.hpp"
+#include"BoardGame_Classes.hpp"
 #include <cctype>
 #include <iomanip>
 using namespace std;
-class PyramidXO: public Board
-{
-    protected:
-    int odd;
-    static int win;
-    static int counter;
-    public:
-    PyramidXO()
+    PyramidXO::PyramidXO()
     {
-        this->win=3;
+        
         this->n_rows=3;
+        this->win=3;
         this->n_cols=5;
         this->odd=1;
 
@@ -28,7 +22,7 @@ class PyramidXO: public Board
             odd+=2;
         }
     }
-      bool valid_row(int x)
+      bool PyramidXO::valid_row(int x)
       {
         int value=0;
         for(int i=0;i<x;i++)
@@ -42,7 +36,7 @@ class PyramidXO: public Board
         }
         return false;
       }
-      bool update_board(int x, int y, char mark)
+      bool PyramidXO::update_board(int x, int y, char mark)
       {
         if(y>=0||y<n_cols||this->valid_row(x))
         {
@@ -52,7 +46,7 @@ class PyramidXO: public Board
         }
         return false;
       }
-      bool is_winner()
+      bool PyramidXO::is_winner()
       {
         for (int i=0;i<n_rows;i++)
         {
@@ -63,11 +57,11 @@ class PyramidXO: public Board
         }
         return false;
       }
-      bool is_winner(int x,int y, char mark,int vert=0,int horiz=0)
+      bool PyramidXO::is_winner(int x,int y, char mark,int vert,int horiz)
       {
         board[x][y]='~';
         counter++;
-        if(counter==win)
+        if(counter==this->win)
         {
             return true;
         }
@@ -94,7 +88,7 @@ class PyramidXO: public Board
         board[x][y]=mark;
         return false;
       }
-      bool is_draw()
+      bool PyramidXO::is_draw()
       {
         if(n_moves>calc_max_moves()&&!is_winner())
         {
@@ -102,7 +96,7 @@ class PyramidXO: public Board
         };
         return false;
       }
-      void display_board() 
+      void PyramidXO::display_board() 
     {
         for (int i=0;i<n_rows;i++) {
             cout << "\n| ";
@@ -114,11 +108,11 @@ class PyramidXO: public Board
         }
         cout << endl;
     }
-      bool game_is_over()
+      bool PyramidXO::game_is_over()
       {
         return (n_moves>=calc_max_moves());
       }
-      int calc_max_moves()
+      int PyramidXO::calc_max_moves()
       {
         int size;
         for(int i=0;i<this->n_rows;i++)
@@ -129,7 +123,7 @@ class PyramidXO: public Board
         }
         return size;
       }
-};
+      int PyramidXO::counter=0;
 // class Board {
 // protected:
 //    int n_rows, n_cols;

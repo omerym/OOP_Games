@@ -5,6 +5,10 @@
 
 #include <iostream>
 #include"BoardGame_Classes.hpp"
+#include "GameManager.cpp"
+#include "Player.cpp"
+#include "RandomPlayer.cpp"
+#include "X_O_Board.cpp"
 using namespace std;
 
 void game1() {
