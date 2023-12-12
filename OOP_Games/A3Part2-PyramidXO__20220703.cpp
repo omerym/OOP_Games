@@ -22,15 +22,15 @@ using namespace std;
             odd+=2;
         }
     }
-      bool PyramidXO::valid_row(int x)
+      bool PyramidXO::valid_column(int y)
       {
         int value=0;
-        for(int i=0;i<x;i++)
+        for(int i=0;i<y;i++)
         {
             value+=odd;
             odd+=2;
         }
-        if(value>=x||value<x)
+        if(value>=y||value<y)
         {
             return true;
         }
@@ -38,7 +38,7 @@ using namespace std;
       }
       bool PyramidXO::update_board(int x, int y, char mark)
       {
-        if(y>=0||y<n_cols||this->valid_row(x))
+        if(y>=0||y<n_cols||this->valid_column(y))
         {
             board[x][y]=toupper(mark);
             n_moves++;
@@ -100,11 +100,12 @@ using namespace std;
     {
         for (int i=0;i<n_rows;i++) {
             cout << "\n| ";
-            for (int j=0;j<n_cols;j++) {
+            for (int j=0;j<odd;j++) {
                 cout << "(" << i << "," << j << ")";
                 cout << setw(2) << board [i][j] << " |";
             }
             cout << "\n-----------------------------";
+            odd+=2;
         }
         cout << endl;
     }
