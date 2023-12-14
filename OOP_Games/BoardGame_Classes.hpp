@@ -4,6 +4,7 @@
 // Version: 1
 #ifndef _BoardGame_CLASSES_H
 #define _BoardGame_CLASSES_H
+#include<string>
 using namespace std;
 class Board {
 protected:
