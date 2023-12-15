@@ -5,6 +5,7 @@
 
 #include <iostream>
 #include"BoardGame_Classes.hpp"
+#include"FourRow.hpp"
 using namespace std;
 
 void game1() {
@@ -19,12 +20,30 @@ void game1() {
         players[1] = new Player (2, 'o');
     else
         //Player pointer points to child
-        players[1] = new RandomPlayer ('o', 3);
+        players[1] = new RandomPlayer ('o', 7);
 
     GameManager x_o_game (new X_O_Board(), players);
     x_o_game.run();
     system ("pause");
     
+}
+void game3()
+{int choice;
+    Player* players[2];
+    players[0] = new Player (1, 'x');
+
+    cout << "Welcome to FCAI four in a row Game. :)\n";
+    cout << "Press 1 if you want to play with computer: ";
+    cin >> choice;
+    if (choice != 1)
+        players[1] = new Player (2, 'o');
+    else
+        //Player pointer points to child
+        players[1] = new RandomPlayer ('o', 3);
+
+    GameManager x_o_game (new FourRowBoard(), players);
+    x_o_game.run();
+    system ("pause");
 }
 int main()
 {
@@ -36,6 +55,9 @@ int main()
     {
     case 1:
         game1();
+        break;
+        case 3:
+        game3();
         break;
     }
 }

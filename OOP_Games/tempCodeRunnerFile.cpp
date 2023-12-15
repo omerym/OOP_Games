@@ -1,0 +1,1 @@
+  lineInput(inputNumber-1);
