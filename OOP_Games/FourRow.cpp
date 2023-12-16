@@ -7,6 +7,8 @@ int numberIndex = 5;
 int player = 1;
 bool endGame = false;
 
+//function to show how to input the number into the board
+
 void lineInput(int inputNumber) {
     if (numberIndex >= 0) {
         if (boardFourRow[numberIndex][inputNumber] != 0) {
@@ -19,9 +21,10 @@ void lineInput(int inputNumber) {
     } else {
         cout << "Wrong input, try again\n";
         player = (player == 1) ? 2 : 1;
+        numberIndex = 5;
     }
 }
-
+// function to print the board
 void printrowsandcolumns() {
     for (int y = 0; y < 7; y++) {
         cout << " " << y + 1 << " ";
@@ -37,7 +40,7 @@ void printrowsandcolumns() {
             } else if (boardFourRow[x][y] == 2) {
                 cout << "O";
             }
-            cout << "|";
+            
         }
         cout << "\n";
     }
@@ -51,14 +54,15 @@ void checkWinner() {
                 endGame = true;
 
                 cout << "\nPlayer " << player << " wins \n";
+                //check for  a winner verticaly(colunms)
             } else if (boardFourRow[x][y] == player && x >= 3 && boardFourRow[x - 1][y] == player &&boardFourRow[x - 2][y] == player &&boardFourRow[x - 3][y] == player) {
                 endGame = true;
                 cout << "\nPlayer " << player << " wins \n";
-
+               // check for a winner diagonal to left down
             } else if (boardFourRow[x][y] == player &&x >= 3 && y >= 3 && boardFourRow[x - 1][y - 1] == player &&boardFourRow[x - 2][y - 2] == player &&boardFourRow[x - 3][y - 3] == player) {
                 endGame = true;
                 cout << "\nPlayer " << player << " wins\n";
-                
+               //check for a winner diagonal to left up 
             } else if (boardFourRow[x][y] == player&&x >= 3 && y <= 3 && boardFourRow[x - 1][y + 1] == player &&boardFourRow[x - 2][y + 2] == player &&boardFourRow[x - 3][y + 3] == player) {
                 endGame = true; 
                 cout << "\nPlayer " << player << " wins \n";
