@@ -2,10 +2,12 @@
 // Author:  Mohammad El-Ramly
 // Date:    10/10/2022
 // Version: 1
-
+#include <cstdlib> 
 #include <iostream>
 #include"BoardGame_Classes.hpp"
 #include"X_O_5x5.hpp"
+#include"AiPlayer.hpp"
+#include <time.h> 
 using namespace std;
 
 void game1() {
@@ -28,9 +30,11 @@ void game1() {
     
 }
 void game4() {
-    int choice;
     Player* players[2];
-    string message = "1. human player\n2. random player\n";
+    X_O_5x5_Board* board = new X_O_5x5_Board;
+    players[0] = new AiPlayer('x', 2, &(board->board));
+    players[1] = new AiPlayer('o', 2, &(board->board));
+    string message = "1. human player\n2. random player\n3.AI Player\n";
     int c;
     cout << "Select player 1 type:\n" << message;
     cin >> c;
@@ -42,6 +46,9 @@ void game4() {
     case 2:
         players[0] = new RandomPlayer('x', 5);
         break;
+    case 3:
+            players[0] = new AiPlayer('x', 3, &(board->board));
+            break;
     }
     cout << "Select player 2 type:\n" << message;
     cin >> c;
@@ -53,14 +60,18 @@ void game4() {
     case 2:
         players[1] = new RandomPlayer('o', 5);
         break;
+    case 3:
+        players[1] = new AiPlayer('o', 3, &(board->board));
+        break;
     }
-    GameManager x_o_game(new X_O_5x5_Board(), players);
+    GameManager x_o_game(board, players);
     x_o_game.run();
     system("pause");
 
 }
 int main()
 {
+    srand(time(0));
     int g;
     cout << "What game to play?\n";
     cout << "1. Tic Tac Toe\n";

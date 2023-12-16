@@ -24,16 +24,16 @@ bool X_O_5x5_Board::is_draw()
 }
 bool X_O_5x5_Board::game_is_over()
 {
-	if (moves_available())
+	if (!board.game_is_over())
 	{
 		return false;
 	}
-	end_score = board.evaluate();
-	if (end_score > 0)
+	int score = board.evaluate();
+	if (score > 0)
 	{
 		cout << "X wins!\n";
 	}
-	else if(end_score < 0)
+	else if(score < 0)
 	{
 		cout << "O wins!\n";
 	}
@@ -42,8 +42,4 @@ bool X_O_5x5_Board::game_is_over()
 		cout << "Draw!\n";
 	}
 	return true;
-}
-bool X_O_5x5_Board::moves_available()
-{
-	return board.moves() < board.max_moves;
 }
