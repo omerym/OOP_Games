@@ -5,10 +5,6 @@
 
 #include <iostream>
 #include"BoardGame_Classes.hpp"
-#include "GameManager.cpp"
-#include "Player.cpp"
-#include "RandomPlayer.cpp"
-#include "X_O_Board.cpp"
 using namespace std;
 
 void game1() {
@@ -30,7 +26,7 @@ void game1() {
     system ("pause");
     
 }
-int main()
+/*int main()
 {
     int g;
     cout << "What game to play?\n";
@@ -42,4 +38,4 @@ int main()
         game1();
         break;
     }
-}
+}*/

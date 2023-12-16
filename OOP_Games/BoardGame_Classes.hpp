@@ -4,6 +4,7 @@
 // Version: 1
 #ifndef _BoardGame_CLASSES_H
 #define _BoardGame_CLASSES_H
+#include <string>
 using namespace std;
 class Board {
 protected:
@@ -43,7 +44,7 @@ public:
 
 class PyramidXO:public Board {
 protected: 
-int odd;
+static int odd;
 int win;
 static int counter;
 public:

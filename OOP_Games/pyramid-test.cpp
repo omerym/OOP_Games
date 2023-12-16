@@ -5,10 +5,6 @@
 
 #include <iostream>
 #include"BoardGame_Classes.hpp"
-#include "GameManager.cpp"
-#include "Player.cpp"
-#include "RandomPlayer.cpp"
-#include "A3Part2-PyramidXO__20220703.cpp"
 using namespace std;
 
 int main() {
