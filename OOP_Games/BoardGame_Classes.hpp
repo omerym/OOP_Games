@@ -42,6 +42,8 @@ public:
    bool game_is_over();
 };
 
+
+
 ///////////////////////////////////////////
 // This class represents a player who has
 // a name and a symbol to put on board

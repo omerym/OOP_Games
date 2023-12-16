@@ -59,6 +59,38 @@ void game4() {
     system("pause");
 
 }
+void game4() {
+    int choice;
+    Player* players[2];
+    string message = "1. human player\n2. random player\n";
+    int c;
+    cout << "Select player 1 type:\n" << message;
+    cin >> c;
+    switch (c)
+    {
+    case 1:
+        players[0] = new Player(1, 'x');
+        break;
+    case 2:
+        players[0] = new RandomPlayer('x', 5);
+        break;
+    }
+    cout << "Select player 2 type:\n" << message;
+    cin >> c;
+    switch (c)
+    {
+    case 1:
+        players[1] = new Player(2, 'o');
+        break;
+    case 2:
+        players[1] = new RandomPlayer('o', 5);
+        break;
+    }
+    GameManager x_o_game(new X_O_5x5_Board(), players);
+    x_o_game.run();
+    system("pause");
+
+}
 int main()
 {
     int g;
