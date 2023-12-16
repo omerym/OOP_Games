@@ -5,9 +5,10 @@
 
 #include <iostream>
 #include"BoardGame_Classes.hpp"
+#include "PyramidXO.hpp"
 using namespace std;
 
-int main() {
+void game2() {
     int choice;
     Player* players[2];
     players[0] = new Player (1, 'x');

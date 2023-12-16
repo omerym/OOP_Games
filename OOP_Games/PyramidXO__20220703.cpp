@@ -1,5 +1,6 @@
 #include <iostream>
 #include"BoardGame_Classes.hpp"
+#include "PyramidXO.hpp"
 #include <cctype>
 #include <iomanip>
 using namespace std;
@@ -42,26 +43,33 @@ using namespace std;
     }
       bool PyramidXO::update_board(int x, int y, char mark)
       {
-        if(board[x][y]=='0'&&x>=0&&x<n_rows&&y>=0&&y<n_cols)
+        if(x>=0&&x<n_rows&&y>=0&&y<n_cols)
         {
-            board[x][y]=mark;
-            n_moves++;
-            display_board();
-            return true;
-            
+            if(board[x][y]=='0')
+           {     board[x][y]=mark;
+                n_moves++;
+                display_board();
+                return true;
+            }
+            return false;
         }
+        
         
         return false;
       }
       bool PyramidXO::is_winner()
       {
+        counter=0;
         for (int i=0;i<n_rows;i++)
         {
             for (int j=0;j<n_cols;j++)
             {
-                if(board[i][j]!=' '||board[i][j]!=0)
+                if(board[i][j]==' '||board[i][j]=='0')
                 {
-                return is_winner(i,j,board[i][j]);
+                }
+                else
+                {
+                    return is_winner(i,j,board[i][j]);
                 }
             }
         }
@@ -70,11 +78,11 @@ using namespace std;
       bool PyramidXO::is_winner(int x,int y, char mark,int vert,int horiz)
       {
         if(x>=0&&x<n_rows&&y>=0&&y<n_cols&&x+vert<n_rows&&x+vert>=0&&y+horiz<n_cols&&y+horiz>=0&&board[x][y]!=' ')
-        {    board[x][y]='~';
+        {   board[x][y]='~';
             counter++;
-            display_board();
             if(counter==this->win)
             {
+                board[x][y]=mark;
                 counter=0;
                 return true;
             }
@@ -84,21 +92,21 @@ using namespace std;
                     {
                         for(int j =-1;j<2;j++)
                         {
-                            if(x+i>=0&&x+i<n_rows&&x+j>=0&&x+j<n_cols)
+                            if(x+i>=0&&x+i<n_rows&&y+j>=0&&y+j<n_cols)
                             {    if(board[x+i][y+j]==mark)
                                 {
-                                    is_winner((x+i),(y+j),mark,i,j);
+                                    return is_winner((x+i),(y+j),mark,i,j);
                                 }
                                 
                             }
                         }
                     }
             }
-            else
+            else if(x+vert>=0&&x+vert<n_rows&&y+horiz>=0&&y+horiz<n_cols)
             {
                 if(board[x+vert][y+horiz]==mark)
                 {
-                    is_winner(x,y,mark,vert,horiz);
+                   return is_winner(x,y,mark,vert,horiz);
                 }
             }
             board[x][y]=mark;
