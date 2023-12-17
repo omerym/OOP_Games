@@ -9,6 +9,7 @@
 #include"AiPlayer.hpp"
 #include <time.h> 
 #include "PyramidXO.hpp"
+#include "FourRow.hpp"
 using namespace std;
 
 void game1() {
@@ -31,22 +32,67 @@ void game1() {
     
 }
 void game2() {
-    int choice;
+     int choice;
     Player* players[2];
-    players[0] = new Player (1, 'x');
-
-    cout << "Welcome to FCAI X-O Game. :)\n";
-    cout << "Press 1 if you want to play with computer: ";
-    cin >> choice;
-    if (choice != 1)
-        players[1] = new Player (2, 'o');
-    else
-        //Player pointer points to child
-        players[1] = new RandomPlayer ('o', 3);
-
-    GameManager x_o_game (new PyramidXO(), players);
+    string message = "1. human player\n2. random player\n";
+    int c;
+    cout << "Select player 1 type:\n" << message;
+    cin >> c;
+    switch (c)
+    {
+    case 1:
+        players[0] = new Player(1, 'x');
+        break;
+    case 2:
+        players[0] = new RandomPlayer('x', 5);
+        break;
+    }
+    cout << "Select player 2 type:\n" << message;
+    cin >> c;
+    switch (c)
+    {
+    case 1:
+        players[1] = new Player(2, 'o');
+        break;
+    case 2:
+        players[1] = new RandomPlayer('o', 5);
+        break;
+    }
+    GameManager x_o_game(new PyramidXO(), players);
     x_o_game.run();
-    system ("pause");
+    system("pause");
+    
+}
+void game3() {
+     int choice;
+    Player* players[2];
+    string message = "1. human player\n2. random player\n";
+    int c;
+    cout << "Select player 1 type:\n" << message;
+    cin >> c;
+    switch (c)
+    {
+    case 1:
+        players[0] = new Player(1, 'x');
+        break;
+    case 2:
+        players[0] = new RandomPlayer('x', 5);
+        break;
+    }
+    cout << "Select player 2 type:\n" << message;
+    cin >> c;
+    switch (c)
+    {
+    case 1:
+        players[1] = new Player(2, 'o');
+        break;
+    case 2:
+        players[1] = new RandomPlayer('o', 5);
+        break;
+    }
+    GameManager x_o_game(new FourRowBoard(), players);
+    x_o_game.run();
+    system("pause");
     
 }
 void game4() {
@@ -95,6 +141,7 @@ int main()
     cout << "What game to play?\n";
     cout << "1. Tic Tac Toe\n";
     cout << "2. Pyramid Tic Tac Toe\n";
+    cout << "3. Four in a row Tic Tac Toe\n";
     cout << "4. 5 x 5 Tic Tac Toe\n";
     cin >> g;
     switch (g) 
@@ -104,6 +151,9 @@ int main()
         break;
     case 2:
         game2();
+        break;
+    case 3:
+        game3();
         break;
     case 4:
         game4();
