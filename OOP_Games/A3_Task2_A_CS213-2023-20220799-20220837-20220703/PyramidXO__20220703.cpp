@@ -49,9 +49,9 @@ using namespace std;
            {     board[PlayX][PlayY]=mark;
                 n_moves++;
                 display_board();
-                cout<<endl<<"current turn"<<n_moves;
                 return true;
             }
+            display_board();
             return false;
         }
         
@@ -122,7 +122,7 @@ using namespace std;
       }
       bool PyramidXO::is_draw()
       {
-        if(n_moves==10&&!is_winner())
+        if(n_moves>=9&&!is_winner())
         {
             return true;
         };
@@ -162,7 +162,7 @@ using namespace std;
     }
       bool PyramidXO::game_is_over()
       {
-        return (n_moves==10);
+        return (n_moves>=9);
       }
 // class Board {
 // protected:
