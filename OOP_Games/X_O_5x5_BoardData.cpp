@@ -1,5 +1,6 @@
 #include "X_O_5x5.hpp"
 #include <iostream>
+#include <utility>
 using namespace std;
 
 int X_O_5x5_BoardData::moves() const
@@ -13,7 +14,7 @@ int X_O_5x5_BoardData::evaluate() const
 	{
 		// multiply score with large number to ensure that 
 		// a winning board have larger score than a non winnig board
-		return score * 100;
+		return score * MIN_WIN;
 	}
 	return score;
 }
@@ -162,20 +163,25 @@ void X_O_5x5_BoardData::generate_moves(vector<X_O_5x5_BoardData>& moves) const
 		}
 	}
 }
-void X_O_5x5_BoardData::generate_moves(vector<X_O_5x5_BoardData>& moves, vector<Position>& positions) const
+void X_O_5x5_BoardData::generate_moves(vector<pair<X_O_5x5_BoardData, Position>>& moves) const
 {
 	unsigned long long bitBoard = board_bitBoard();
 	char symbol = (_moves % 2 == 0) ? 'x' : 'o';
-	for (int x = 0; x < n_cols; x++)
+	for (int i = 0; i < n_cols; i++)
 	{
-		for (int y = 0; y < n_rows; y++)
+		int x_sign = (i % 2 == 0) ? -1 : 1;
+		int x = x_sign * (i + 1) / 2 + n_cols / 2;
+		x %= n_cols;
+		for (int j = 0; j < n_rows; j++)
 		{
+			int y_sign = (j % 2 == 0) ? 1 : -1;
+			int y = y_sign * (j + 1) / 2 + n_rows / 2;
+			y %= n_rows;
 			if (!is_set(bitBoard, get_index(x, y)))
 			{
 				X_O_5x5_BoardData b = *this;
 				b.update_board(x, y, symbol);
-				moves.push_back(b);
-				positions.push_back(Position(x, y));
+				moves.push_back({b, Position(x, y) });
 			}
 		}
 	}

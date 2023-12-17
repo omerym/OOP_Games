@@ -35,6 +35,8 @@ public:
 	bool game_is_over() const;
 	void display() const;
 	int moves() const;
+	// minimum score of winning board
+	static const int MIN_WIN = 1000;
 	static const int max_moves = 24;
 	static const int max_in_row = 5;
 	static const int n_cols = 5;
@@ -42,7 +44,7 @@ public:
 	static bool is_set(unsigned long long bitBoard, int index);
 	bool update_board(int x, int y, char mark);
 	void generate_moves(vector<X_O_5x5_BoardData>& moves) const;
-	void generate_moves(vector<X_O_5x5_BoardData>& moves, vector<Position>& positions) const;
+	void generate_moves(vector<pair<X_O_5x5_BoardData, Position>>& moves) const;
 	int evaluate() const;
 };
 class X_O_5x5_Board :public Board {

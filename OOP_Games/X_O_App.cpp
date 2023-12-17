@@ -50,6 +50,7 @@ void game2() {
     
 }
 void game4() {
+    int max_depth = 3;
     Player* players[2];
     X_O_5x5_Board* board = new X_O_5x5_Board;
     players[0] = new AiPlayer('x', 2, &(board->board));
@@ -67,7 +68,7 @@ void game4() {
         players[0] = new RandomPlayer('x', 5);
         break;
     case 3:
-            players[0] = new AiPlayer('x', 3, &(board->board));
+            players[0] = new AiPlayer('x', max_depth, &(board->board));
             break;
     }
     cout << "Select player 2 type:\n" << message;
@@ -81,7 +82,7 @@ void game4() {
         players[1] = new RandomPlayer('o', 5);
         break;
     case 3:
-        players[1] = new AiPlayer('o', 3, &(board->board));
+        players[1] = new AiPlayer('o', max_depth, &(board->board));
         break;
     }
     GameManager x_o_game(board, players);
