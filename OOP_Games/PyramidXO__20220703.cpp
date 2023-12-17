@@ -4,6 +4,8 @@
 #include <cctype>
 #include <iomanip>
 using namespace std;
+    int PyramidXO::odd=0;
+    int PyramidXO::counter=0;
     PyramidXO::PyramidXO()
     {
         int space=2;
@@ -11,6 +13,7 @@ using namespace std;
         this->n_rows=3;
         this->win=3;
         this->n_cols=5;
+        this->odd=1;
 
         board= new char*[n_rows];
         for (int i =0;i<n_rows;i++)
@@ -40,18 +43,14 @@ using namespace std;
     }
       bool PyramidXO::update_board(int x, int y, char mark)
       {
-        int PlayX,PlayY;
-        PlayX=x-1;
-        PlayY=y-1;
-        if(PlayX>=0&&PlayX<n_rows&&PlayY>=0&&PlayY<n_cols)
+        if(x>=0&&x<n_rows&&y>=0&&y<n_cols)
         {
-            if(board[PlayX][PlayY]=='0')
-           {     board[PlayX][PlayY]=mark;
+            if(board[x][y]=='0')
+           {     board[x][y]=mark;
                 n_moves++;
                 display_board();
                 return true;
             }
-            display_board();
             return false;
         }
         
@@ -60,6 +59,7 @@ using namespace std;
       }
       bool PyramidXO::is_winner()
       {
+        counter=0;
         for (int i=0;i<n_rows;i++)
         {
             for (int j=0;j<n_cols;j++)
@@ -69,60 +69,54 @@ using namespace std;
                 }
                 else
                 {
-                    if(is_winner(i,j,board[i][j]))
-                    {
-                        return true;
-                    }
+                    return is_winner(i,j,board[i][j]);
                 }
             }
         }
         return false;
       }
-      bool PyramidXO::is_winner(int x,int y, char mark)
+      bool PyramidXO::is_winner(int x,int y, char mark,int vert,int horiz)
       {
-        int tempcounter=1;
-        for(int i =-1;i<2;i++)
-        {
-            for(int j=-1;j<2;j++)
+        if(x>=0&&x<n_rows&&y>=0&&y<n_cols&&x+vert<n_rows&&x+vert>=0&&y+horiz<n_cols&&y+horiz>=0&&board[x][y]!=' ')
+        {   board[x][y]='~';
+            counter++;
+            if(counter==this->win)
             {
-                tempcounter=1;
-                    for (int temp =1;temp<win;temp++)
+                board[x][y]=mark;
+                counter=0;
+                return true;
+            }
+            if(vert==0&&horiz==0)
+            {
+                    for(int i =-1;i<2;i++)
                     {
-                        
-                        if(!(i==0&&j==0))
+                        for(int j =-1;j<2;j++)
                         {
-                        int moveX=i*temp;
-                        int moveY=j*temp;
-                            
-                            if((x+moveX)>=0&&(x+moveX)<n_rows&&(y+moveY)>=0&&(y+moveY)<n_cols)
-                            {
-                                if(board[x+moveX][y+moveY]==mark)
+                            if(x+i>=0&&x+i<n_rows&&y+j>=0&&y+j<n_cols)
+                            {    if(board[x+i][y+j]==mark)
                                 {
-                                    tempcounter++;
-                                    if(tempcounter>=win)
-                                    {
-                                        return true;
-                                    }
+                                    return is_winner((x+i),(y+j),mark,i,j);
                                 }
-                                else
-                                {
-                                    break;
-                                }
+                                
                             }
-                        }
-                        else
-                        {
-                            break;
                         }
                     }
             }
+            else if(x+vert>=0&&x+vert<n_rows&&y+horiz>=0&&y+horiz<n_cols)
+            {
+                if(board[x+vert][y+horiz]==mark)
+                {
+                   return is_winner(x,y,mark,vert,horiz);
+                }
+            }
+            board[x][y]=mark;
+            counter--;
         }
-        
             return false;
       }
       bool PyramidXO::is_draw()
       {
-        if(n_moves>=9&&!is_winner())
+        if(n_moves>=10&&!is_winner())
         {
             return true;
         };
@@ -142,27 +136,11 @@ using namespace std;
             }
             cout<<endl;
         }
-        for (int i =0;i<this->n_rows;i++)
-        {
-            for(int j=0;j<n_cols;j++)
-            {
-                if(board[i][j]!=' ')
-                {
-                    cout<<setw(2)<<'('<<i+1<<','<<j+1<<')';
-                }
-                else
-                {
-                    cout<<setw(2)<<board[i][j];
-                }
-                
-            }
-            cout<<endl;
-        }
         cout << endl;
     }
       bool PyramidXO::game_is_over()
       {
-        return (n_moves>=9);
+        return (n_moves>=10);
       }
 // class Board {
 // protected:
