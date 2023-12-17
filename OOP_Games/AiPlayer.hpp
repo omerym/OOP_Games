@@ -32,7 +32,7 @@ class AiPlayer : public Player
 		// if minimising invert result
 		return maximise ? result : -result;
 	}
-	Result evaluate(T board, bool maximise, unsigned int depth, int& comp)
+	Result evaluate(T board, bool maximise, unsigned int depth, Result alpha, Result beta, int& comp)
 	{
 		if (depth <= 0 || board.game_is_over())
 		{
@@ -46,10 +46,19 @@ class AiPlayer : public Player
 		result.depth = max_depth;
 		for (auto move : moves)
 		{
-			Result s = evaluate(move, !maximise, depth - 1, comp);
-			if (compare_result(s, result, maximise) > 0)
+			Result s = evaluate(move, !maximise, depth - 1,alpha,beta, comp);
+			result = compare_result(s, result, maximise) > 0 ? s : result;
+			if (maximise)
 			{
-				result = s;
+				alpha = compare_result(result, alpha, maximise) > 0 ? result : alpha;
+			}
+			else
+			{
+				beta = compare_result(result, beta, maximise) > 0 ? result : beta;
+			}
+			if (beta.score <= alpha.score)
+			{
+				break;
 			}
 		}
 		return result;
@@ -74,14 +83,28 @@ public:
 		result.score = is_maximiser() ? INT_MIN + 1 : INT_MAX;
 		result.depth = max_depth;
 		int comp = 0;
+		Result alpha = { INT_MIN + 1,0 };
+		Result beta = { INT_MAX,0 };
 		for (int i = 0; i < moves.size(); i++)
 		{
-			Result r = evaluate(moves[i].first, is_maximiser(), max_depth, comp);
+			Result r = evaluate(moves[i].first, is_maximiser(), max_depth, alpha, beta, comp);
 			if (compare_result(r, result, is_maximiser()) > 0)
 			{
 				result = r;
 				x = moves[i].second.x;
 				y = moves[i].second.y;
+			}
+			if (is_maximiser())
+			{
+				alpha = compare_result(result, alpha, is_maximiser()) > 0 ? result : alpha;
+			}
+			else
+			{
+				beta = compare_result(result, beta, is_maximiser()) > 0 ? result : beta;
+			}
+			if (beta.score <= alpha.score)
+			{
+				break;
 			}
 		}
 		cout << "positions calculated: " << comp << endl;

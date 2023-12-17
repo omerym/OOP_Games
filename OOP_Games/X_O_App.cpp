@@ -50,7 +50,7 @@ void game2() {
     
 }
 void game4() {
-    int max_depth = 3;
+    int max_depth = 5;
     Player* players[2];
     X_O_5x5_Board* board = new X_O_5x5_Board;
     players[0] = new AiPlayer('x', 2, &(board->board));
