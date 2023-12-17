@@ -3,6 +3,7 @@
 #include "BoardGame_Classes.hpp"
 #include "Position.hpp"
 #include <utility>
+#include <algorithm>
 struct Result
 {
 public:
@@ -69,7 +70,7 @@ public:
 		return symbol == 'x';
 	}
 	// Take a symbol and pass it to parent
-	AiPlayer(char symbol, unsigned int max_depth, T* board) : Player(symbol), max_depth(max_depth), board(board)
+	AiPlayer(char symbol, T* board,unsigned int max_depth) : Player(symbol), max_depth(max_depth), board(board)
 	{
 		name = "AI Player: ";
 		name += symbol;
