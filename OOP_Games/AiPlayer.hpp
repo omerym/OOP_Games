@@ -3,7 +3,6 @@
 #include "BoardGame_Classes.hpp"
 #include "Position.hpp"
 #include <utility>
-#include <algorithm>
 struct Result
 {
 public:
