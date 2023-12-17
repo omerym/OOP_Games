@@ -1,0 +1,140 @@
+[33mcommit 2dedb6b74a5d7bd08fa5497276ad28eacad42c61[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Merge: d950880 8dee8c1
+Author: Omar-Salah123 <sd.omar04@gmail.com>
+Date:   Sun Dec 17 19:37:45 2023 +0200
+
+    Merge branch 'delivered-for-assignment'
+
+[33mcommit 8dee8c13c5ba64cfd28e071a9d246f0c717674f2[m[33m ([m[1;31morigin/delivered-for-assignment[m[33m)[m
+Author: Omar-Salah123 <sd.omar04@gmail.com>
+Date:   Sun Dec 17 19:32:41 2023 +0200
+
+    for assignment
+
+[33mcommit 9b22b417dd787367ed02199e5b59184d6d51bcf3[m
+Author: Omar-Salah123 <sd.omar04@gmail.com>
+Date:   Sun Dec 17 19:32:27 2023 +0200
+
+    for assignment
+
+[33mcommit d950880c693522899d4c35d744037059b6d14053[m
+Author: Omer Yassir <omerym10@gmail.com>
+Date:   Sun Dec 17 17:14:43 2023 +0200
+
+    cxbxcb
+
+[33mcommit 3aaa1de4b05724ab53b54247a2856e72348d13ba[m
+Author: Omer Yassir <omerym10@gmail.com>
+Date:   Sun Dec 17 17:14:35 2023 +0200
+
+    svzfzbzcb
+
+[33mcommit 57d3beff201d5685220f364bed210a8a93bfc709[m
+Author: Omer Yassir <omerym10@gmail.com>
+Date:   Sun Dec 17 16:45:40 2023 +0200
+
+    Add alpha beta pruning in AIPlayer
+
+[33mcommit 5475047eecde05d544ccd9d3d141d16d0b6e131a[m
+Author: Omer Yassir <omerym10@gmail.com>
+Date:   Sun Dec 17 16:15:43 2023 +0200
+
+    Fixing Ai player
+
+[33mcommit a5d876b5003740d643cdfb29440939cc4a6f3008[m
+Author: Omer Yassir <omerym10@gmail.com>
+Date:   Sat Dec 16 23:37:22 2023 +0200
+
+    sdg
+
+[33mcommit 7eb2f628e29bb640706a8c7aa3326178477099b0[m
+Merge: 4fa04db 2130790
+Author: Omer Yassir <omerym10@gmail.com>
+Date:   Sat Dec 16 23:36:14 2023 +0200
+
+    fad
+
+[33mcommit 4fa04db13b4d6a8d141b26bd754913b71f12fe18[m
+Author: Omer Yassir <omerym10@gmail.com>
+Date:   Sat Dec 16 23:33:17 2023 +0200
+
+    Add Ai
+
+[33mcommit 2130790b12878301aefab2ae754409be540fa14c[m
+Author: Omar-Salah123 <sd.omar04@gmail.com>
+Date:   Sat Dec 16 23:25:10 2023 +0200
+
+    ada
+
+[33mcommit 902382c12d50503df2e058ac79a8b73da9f43ce5[m
+Merge: 22925a2 9f9400d
+Author: Omar-Salah123 <sd.omar04@gmail.com>
+Date:   Sat Dec 16 23:24:29 2023 +0200
+
+    Merge branch 'Omar-Pyramid-XO'
+
+[33mcommit 9f9400d331789d5fd7e1b7c49d30255272caca7d[m[33m ([m[1;31morigin/Omar-Pyramid-XO[m[33m)[m
+Author: Omar-Salah123 <sd.omar04@gmail.com>
+Date:   Sat Dec 16 23:15:11 2023 +0200
+
+    finished
+
+[33mcommit bde93df9c2fca635b7f71f1cc7ebf7d68060b789[m
+Author: Omar-Salah123 <sd.omar04@gmail.com>
+Date:   Sat Dec 16 22:31:44 2023 +0200
+
+    نتتتت
+
+[33mcommit 22925a2f07122a9f465d4a2dfa09f5964dd14ce6[m
+Author: Omer Yassir <omerym10@gmail.com>
+Date:   Sat Dec 16 21:06:50 2023 +0200
+
+    Refactor
+
+[33mcommit 97c6ab593163e2f401b714194adc52f2455732e0[m
+Author: Omer Yassir <omerym10@gmail.com>
+Date:   Fri Dec 15 20:54:24 2023 +0200
+
+    fix
+
+[33mcommit 58710957e14c63d06b7d62d693e1761154a7a7d0[m
+Author: Omer Yassir <omerym10@gmail.com>
+Date:   Fri Dec 15 15:32:36 2023 +0200
+
+    Add game 4
+
+[33mcommit 7bb3241bde035198bd2a773c66e6c37267fe7451[m
+Author: Op_Bashar <basharabdalla5@gmail.com>
+Date:   Thu Dec 14 14:31:02 2023 +0200
+
+    dsfsadg
+
+[33mcommit f131d3a3da435811f1102a63552e1f06603b87ea[m
+Author: Omar-Salah123 <sd.omar04@gmail.com>
+Date:   Tue Dec 12 23:54:04 2023 +0200
+
+    ad
+
+[33mcommit eebf9a459d1ba9822142ca13d7b7f5840fc4cfcc[m
+Author: Omar-Salah123 <sd.omar04@gmail.com>
+Date:   Tue Dec 12 23:10:46 2023 +0200
+
+    ada
+
+[33mcommit 6a319156cbc5ac1b757c69fe29aa8e603db36cf1[m
+Author: Omar-Salah123 <sd.omar04@gmail.com>
+Date:   Tue Dec 12 21:43:15 2023 +0200
+
+    added my files from previous repo
+
+[33mcommit 2cfe6893cf3f39caacf4307aaa0467acb1312cef[m
+Author: Omer Yassir <omerym10@gmail.com>
+Date:   Tue Dec 12 21:14:47 2023 +0200
+
+    Add project files.
+
+[33mcommit fb58bc8ec218a0ac3169575e36e8269e9b878cb0[m
+Author: Omer Yassir <omerym10@gmail.com>
+Date:   Tue Dec 12 21:14:45 2023 +0200
+
+    Add .gitattributes and .gitignore.
