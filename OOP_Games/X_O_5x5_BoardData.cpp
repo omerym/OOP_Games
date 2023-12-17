@@ -1,6 +1,9 @@
 #include "X_O_5x5.hpp"
+#include "Position.hpp"
 #include <iostream>
 #include <utility>
+#include <vector>
+#include <iostream>
 using namespace std;
 
 int X_O_5x5_BoardData::moves() const
