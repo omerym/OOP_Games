@@ -28,7 +28,7 @@ class AiPlayer : public Player
 		{
 			// if score is positive(winning) least depth is better
 			// if score is negative(losing) most depth is better
-			result = r1.depth > r2.depth ? 1 : -1;
+			result = r1.depth < r2.depth ? 1 : -1;
 			result = r1.score > 0 ? result : -result;
 		}
 		// if minimising invert result
@@ -76,7 +76,7 @@ public:
 		name = "AI Player: ";
 		name += symbol;
 	}
-	// Generate a random move
+
 	void get_move(int& x, int& y)
 	{
 		vector<pair<T, Position>> moves;
@@ -108,7 +108,7 @@ public:
 			{
 				break;
 			}
-		}
+					}
 		cout << "positions calculated: " << comp << endl;
 		if (is_maximiser() && result.score >= board->MIN_WIN)
 		{
