@@ -10,15 +10,29 @@ class AiPlayer : public Player
 {
 	unsigned int max_depth;
 	T* board;
-	int evaluate(T board, bool maximise, unsigned int depth, int alpha, int beta, int& comp)
+	int compare_result(Result r1, Result r2, bool maximise)
 	{
-		if (depth <= 0)
+		int result = 0;
+		if (r1.score != r2.score)
 		{
-			return board.evaluate();
+			result = r1.score > r2.score ? 1 : -1;
 		}
-		if (board.game_is_over())
+		// if two moves have similar score
+		else if (r1.depth != r2.depth)
 		{
-			return board.evaluate();
+			// if score is positive(winning) least depth is better
+			// if score is negative(losing) most depth is better
+			result = r1.depth < r2.depth ? 1 : -1;
+			result = r1.score > 0 ? result : -result;
+		}
+		// if minimising invert result
+		return maximise ? result : -result;
+	}
+	Result evaluate(T board, bool maximise, unsigned int depth, Result alpha, Result beta, int& comp)
+	{
+		if (depth <= 0 || board.game_is_over())
+		{
+			return { board.evaluate(), depth };
 		}
 		comp++;
 		vector<T> moves;
@@ -56,7 +70,7 @@ public:
 		name = "AI Player: ";
 		name += symbol;
 	}
-	// Generate a random move
+
 	void get_move(int& x, int& y)
 	{
 		vector<pair<T, Position>> moves;
@@ -93,7 +107,7 @@ public:
 			{
 				break;
 			}
-		}
+					}
 		cout << "positions calculated: " << comp << endl;
 
 	}

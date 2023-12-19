@@ -33,8 +33,10 @@ void game1() {
 }
 void game2() {
      int choice;
+    int max_depth = 9;
+     PyramidXO* board = new PyramidXO();
     Player* players[2];
-    string message = "1. human player\n2. random player\n";
+    string message = "1. human player\n2. random player\n3.AI Player\n";
     int c;
     cout << "Select player 1 type:\n" << message;
     cin >> c;
@@ -44,8 +46,11 @@ void game2() {
         players[0] = new Player(1, 'x');
         break;
     case 2:
-        players[0] = new RandomPlayer('x', 5);
+        players[0] = new RandomPlayer('x', 6);
         break;
+    case 3:
+            players[0] = new AiPlayer('x', board, max_depth);
+            break;
     }
     cout << "Select player 2 type:\n" << message;
     cin >> c;
@@ -55,10 +60,14 @@ void game2() {
         players[1] = new Player(2, 'o');
         break;
     case 2:
-        players[1] = new RandomPlayer('o', 5);
+        players[1] = new RandomPlayer('o', 6);
         break;
+    case 3:
+            players[1] = new AiPlayer('o', board, max_depth);
+            break;
+    
     }
-    GameManager x_o_game(new PyramidXO(), players);
+    GameManager x_o_game(board, players);
     x_o_game.run();
     system("pause");
     
