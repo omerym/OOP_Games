@@ -221,19 +221,23 @@ using namespace std;
     {
         char mark = (n_moves % 2 == 0) ? 'x' : 'o';
 
-        for (int i = 1; i <= n_rows; i++)
+        for (int i =0; i < n_rows; i++)
         {
-            for (int j = 1; j <= n_cols; j++)
+            for (int j = 0; j < n_cols; j++)
             { 
+                if(i>=0&&i<n_rows&&j>=0&&j<n_cols)
+                {
+                    if(board[i][j]=='0')
+                {     
+                    
                     PyramidXO x = *this;
-                    if ((x.update_board(i,j,mark)))
-                    {
-                         moves.push_back(x);
-                    }
+                    this->update_board(i,j,mark);
+                    moves.push_back(x);
+                }
+                }
             }
-            
-        }
         
+        }
     }
 	void PyramidXO::generate_moves(vector<pair<PyramidXO, Position>>& moves)
     { 
@@ -255,9 +259,13 @@ using namespace std;
     {
         if (this->is_winner())
         {
-            return (n_moves % 2 == 0) ? -INT_MAX : INT_MAX;
+            return !(n_moves % 2 == 0) ? INT_MAX : -INT_MAX;
         }
-        return 0;
+        if (this->is_draw())
+        {
+            return 0;
+        }
+        return -2;
     }
     PyramidXO::~PyramidXO()
     {
