@@ -1,6 +1,7 @@
 #ifndef XO5X5
 #define XO5X5
 #include <vector> 
+#include <limits.h> 
 #include "BoardGame_Classes.hpp"
 #include "Position.hpp"
 class X_O_5x5_BoardData

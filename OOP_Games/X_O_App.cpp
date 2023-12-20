@@ -49,7 +49,7 @@ void game2() {
         players[0] = new RandomPlayer('x', 6);
         break;
     case 3:
-            players[0] = new AiPlayer('x', board, max_depth);
+            players[0] = new AiPlayer<PyramidXO>('x', board, max_depth);
             break;
     }
     cout << "Select player 2 type:\n" << message;
@@ -63,7 +63,7 @@ void game2() {
         players[1] = new RandomPlayer('o', 6);
         break;
     case 3:
-            players[1] = new AiPlayer('o', board, max_depth);
+            players[1] = new AiPlayer<PyramidXO>('o', board, max_depth);
             break;
     
     }
@@ -121,7 +121,7 @@ void game4() {
         players[0] = new RandomPlayer('x', 5);
         break;
     case 3:
-            players[0] = new AiPlayer('x', &(board->board),max_depth);
+            players[0] = new AiPlayer<X_O_5x5_BoardData>('x', &(board->board),max_depth);
             break;
     }
     cout << "Select player 2 type:\n" << message;
@@ -135,7 +135,7 @@ void game4() {
         players[1] = new RandomPlayer('o', 5);
         break;
     case 3:
-        players[1] = new AiPlayer('o',&(board->board), max_depth);
+        players[1] = new AiPlayer<X_O_5x5_BoardData>('o',&(board->board), max_depth);
         break;
     }
     GameManager x_o_game(board, players);

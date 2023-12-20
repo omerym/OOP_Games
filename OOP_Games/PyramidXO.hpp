@@ -3,6 +3,7 @@
 #include "BoardGame_Classes.hpp"
 #include "Position.hpp"
 #include <vector>
+#include <limits.h> 
 class PyramidXO:public Board {
 protected: 
 int win;
