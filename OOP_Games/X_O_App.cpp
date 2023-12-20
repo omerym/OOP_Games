@@ -85,7 +85,7 @@ void game3() {
         players[0] = new Player(1, 'x');
         break;
     case 2:
-        players[0] = new RandomPlayer('x', 5);
+        players[0] = new RandomPlayer('x', 8);
         break;
     }
     cout << "Select player 2 type:\n" << message;
@@ -96,7 +96,7 @@ void game3() {
         players[1] = new Player(2, 'o');
         break;
     case 2:
-        players[1] = new RandomPlayer('o', 5);
+        players[1] = new RandomPlayer('o', 8);
         break;
     }
     GameManager x_o_game(new FourRowBoard(), players);
