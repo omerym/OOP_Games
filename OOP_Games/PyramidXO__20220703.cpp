@@ -231,7 +231,7 @@ using namespace std;
                 {     
                     
                     PyramidXO x = *this;
-                    this->update_board(i,j,mark);
+                    x.update_board(i,j,mark);
                     moves.push_back(x);
                 }
                 }
