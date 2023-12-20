@@ -31,7 +31,7 @@ using namespace std;
                 }
                 else
                 {
-                    board[i][j]='0';
+                    board[i][j]='#';
                 }
                 
                     
@@ -82,7 +82,7 @@ using namespace std;
         PlayY=y-1;
         if(PlayX>=0&&PlayX<n_rows&&PlayY>=0&&PlayY<n_cols)
         {
-            if(board[PlayX][PlayY]=='0')
+            if(board[PlayX][PlayY]=='#')
            {     
             board[PlayX][PlayY]=mark;
                 n_moves++;
@@ -97,7 +97,7 @@ using namespace std;
         {
             for (int j=0;j<n_cols;j++)
             {
-                if(board[i][j]==' '||board[i][j]=='0')
+                if(board[i][j]==' '||board[i][j]=='#')
                 {
                 }
                 else
@@ -117,7 +117,7 @@ using namespace std;
         {
             for (int j=0;j<n_cols;j++)
             {
-                if(board[i][j]==' '||board[i][j]=='0')
+                if(board[i][j]==' '||board[i][j]=='#')
                 {
                 }
                 else
@@ -227,7 +227,7 @@ using namespace std;
             { 
                 if(i>=0&&i<n_rows&&j>=0&&j<n_cols)
                 {
-                    if(board[i][j]=='0')
+                    if(board[i][j]=='#')
                 {     
                     
                     PyramidXO x = *this;
@@ -269,6 +269,10 @@ using namespace std;
     }
     PyramidXO::~PyramidXO()
     {
+        for (int i = 0; i < n_rows; i++)
+        {
+            delete[] this->board[i];
+        }
         delete[] this->board;
     }
     char PyramidXO :: sym=0;
