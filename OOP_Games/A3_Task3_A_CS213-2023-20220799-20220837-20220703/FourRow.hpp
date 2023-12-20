@@ -4,10 +4,8 @@
 class FourRowBoard : public Board
 {
 private:
-//[n_row][n_col]
-//[0][0] top left corner
+int moves = 0;
 char boardFourRow[6][7];
-const int MAX_MOVES = 42;
 public:  
 FourRowBoard();
  // Return true  if move is valid and put it on board
